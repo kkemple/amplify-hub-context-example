@@ -1,3 +1,9 @@
+# Amplify Hub w/ React Context
+
+This is a small example of how you might use Hub and the auth channel to control user state in your app via context. Enjoy! 👨‍🍳
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

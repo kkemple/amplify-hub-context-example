@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { withAuthenticator } from "aws-amplify-react";
+
+import UserConsumer from "./User";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -8,9 +11,15 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <UserConsumer>
+            {user => (
+              <p>
+                {user.isLoggedIn
+                  ? `Hello ${user.username}`
+                  : `Edit <code>src/App.js</code> and save to reload.`}
+              </p>
+            )}
+          </UserConsumer>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -25,4 +34,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withAuthenticator(App, true);
